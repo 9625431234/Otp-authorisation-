@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enter OTP</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #667eea, #764ba2);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      max-width: 90%;
+      width: 350px;
+    }
+
+    h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    button {
+      width: 100%;
+      padding: 1rem;
+      background-color: #00c6ff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #007ecc;
+    }
+
+    @media (max-width: 500px) {
+      h2 {
+        font-size: 1.2rem;
+      }
+      input, button {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Enter OTP to Continue</h2>
+    <form id="otpForm">
+      <input type="text" id="otpInput" placeholder="Enter OTP" required>
+      <button type="submit">Proceed</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("otpForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const enteredOTP = document.getElementById("otpInput").value;
+      console.log("User entered OTP:", enteredOTP);
+      alert("OTP Submitted! (Check browser console)");
+    });
+  </script>
+</body>
+</html>
