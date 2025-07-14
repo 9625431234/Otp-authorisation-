@@ -1,87 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enter OTP</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secure OTP Verification</title>
   <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #667eea, #764ba2);
-      color: white;
+      padding: 0;
+      background: linear-gradient(to right, #dbe6f6, #c5796d);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
+    }
+    .otp-container {
+      background-color: #ffffff;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 90%;
       text-align: center;
     }
-
-    .container {
-      background-color: rgba(0, 0, 0, 0.3);
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      max-width: 90%;
-      width: 350px;
+    .otp-container h2 {
+      margin-bottom: 1rem;
+      color: #333;
     }
-
-    h2 {
-      margin-bottom: 1.5rem;
+    .otp-container p {
+      margin-bottom: 2rem;
+      color: #777;
+      font-size: 0.95rem;
     }
-
     input[type="text"] {
       width: 100%;
       padding: 1rem;
-      margin-bottom: 1rem;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
+      font-size: 1.1rem;
+      border: 2px solid #ccc;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      transition: border-color 0.3s ease;
     }
-
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #007bff;
+    }
     button {
       width: 100%;
       padding: 1rem;
-      background-color: #00c6ff;
+      font-size: 1.1rem;
       border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: bold;
+      border-radius: 12px;
+      background-color: #007bff;
       color: white;
+      font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: background-color 0.3s ease;
     }
-
     button:hover {
-      background-color: #007ecc;
+      background-color: #0056b3;
     }
-
-    @media (max-width: 500px) {
-      h2 {
-        font-size: 1.2rem;
-      }
-      input, button {
-        font-size: 0.9rem;
-      }
+    .secure-note {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Enter OTP to Continue</h2>
+  <div class="otp-container">
+    <h2>Verify Your Identity</h2>
+    <p>An OTP has been sent to your registered mobile number. Please enter it below to continue.</p>
     <form id="otpForm">
-      <input type="text" id="otpInput" placeholder="Enter OTP" required>
-      <button type="submit">Proceed</button>
+      <input type="text" id="otpInput" placeholder="Enter 6-digit OTP" maxlength="6" required />
+      <button type="submit">Verify OTP</button>
     </form>
+    <div class="secure-note">Your data is encrypted and secure.</div>
   </div>
 
   <script>
     document.getElementById("otpForm").addEventListener("submit", function(e) {
       e.preventDefault();
-      const enteredOTP = document.getElementById("otpInput").value;
-      console.log("User entered OTP:", enteredOTP);
-      alert("OTP Submitted! (Check browser console)");
+      const otp = document.getElementById("otpInput").value;
+      console.log("OTP Submitted:", otp);
+      alert("OTP submitted! (Check browser console)");
     });
   </script>
 </body>
